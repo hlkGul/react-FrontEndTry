@@ -22,7 +22,7 @@ export default function ProductDetail() {
             <Image
               floated="right"
               size="mini"
-              src="/images/avatar/large/steve.jpg"
+              src="https://turkbayraklari.com/wp-content/uploads/2015/10/turk-bayraklar-g%C3%B6rseller.jpg"
             />
             <Card.Header>{product.productName}</Card.Header>
             <Card.Meta></Card.Meta>

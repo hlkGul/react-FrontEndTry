@@ -1,36 +1,30 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form,  } from 'formik'
 import * as Yup from "yup"
-import { FormField , Button} from 'semantic-ui-react'
+import {  Button  } from 'semantic-ui-react'
+import HgTextInput from '../utilities/customFormControls/HgTextInput'
 
 export default function ProductAdd() {
-    const initialValues = { productName: "", unitPrice: 10 }
+    const initialValues = { productName: "", unitPrice: 10 };
+  
     const schema = Yup.object({
-        productName: Yup.string().required("Urun adı zorunlu"),
-        unitPrice: Yup.number().required("urun fiyatı zorunlu")
-    })
+      productName: Yup.string().required("Ürün adı zorunlu"),
+      unitPrice: Yup.number().required("Ürün fiyatı zorunlu"),
+    });
+  
     return (
-        <div>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={schema}
-                onSubmit = {(values)=>{
-                    //burada axios kullanarak yakaladıgımız degerlerimizi backende yoolarız
-                    
-                }}
-            >
-                <Form className = "ui form">
-                    <FormField >
-                        <Field name="productName" placeholder="Urun adı"></Field>
-                    </FormField>
-                    <FormField>
-                        <Field name="unitPrice" placeholder="Birim Fiyatı"></Field>
-
-                    </FormField>
-                    <Button color ="green" type ="submit">Ekle</Button>
-                </Form>
-            </Formik>
-
-        </div>
-    )
-}
+        <Formik 
+        initialValues={initialValues} 
+        validationSchema={schema}
+        onSubmit = {(values)=>{
+            console.log(values)
+        }}
+        >
+          <Form className="ui form">
+            <HgTextInput name="productName" placeholder="Ürün adı"/>
+            <HgTextInput name="unitPrice" placeholder="Ürün fiyatı"/>
+            <Button color="green" type="submit">Ekle</Button>
+          </Form>
+        </Formik>
+    );
+  }
